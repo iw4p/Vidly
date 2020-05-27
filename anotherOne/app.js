@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 require('dotenv/config')
 
-//import routes
+app.use(bodyParser.json())
 
+//import routes
 const postsRoute = require('./routes/posts')
 
 app.use('/posts', postsRoute)
@@ -13,7 +15,6 @@ app.use('/posts', postsRoute)
 app.get('/', (req, res) => {
     res.send('We are on home')
 });
-
 
 
 // Connect to DB
